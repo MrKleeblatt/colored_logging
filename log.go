@@ -241,7 +241,7 @@ func (l *Logger) output(prefix Prefix, data string) error {
 		l.buf.AppendByte(' ')
 		// Print reset color if color enabled
 		if l.color {
-			l.buf.Off()
+			l.buf.Reset()
 		}
 	}
 	// Add caller filename and line if enabled
@@ -259,7 +259,7 @@ func (l *Logger) output(prefix Prefix, data string) error {
 		l.buf.AppendByte(' ')
 		// Print color stop
 		if l.color {
-			l.buf.Off()
+			l.buf.Reset()
 		}
 	}
 	// Print the actual string data from caller
@@ -291,7 +291,7 @@ func (l *Logger) output(prefix Prefix, data string) error {
 			l.buf.AppendByte('\n')
 			// Print color stop
 			if l.color {
-				l.buf.Off()
+				l.buf.Reset()
 			}
 		}
 	}
