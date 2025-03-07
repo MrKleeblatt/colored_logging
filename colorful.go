@@ -7,7 +7,7 @@ type ColorBuffer struct {
 
 // color pallete map
 var (
-	colorOff    = []byte("\033[0m")
+	colorReset  = []byte("\033[0m")
 	colorRed    = []byte("\033[0;31m")
 	colorGreen  = []byte("\033[0;32m")
 	colorOrange = []byte("\033[0;33m")
@@ -18,8 +18,8 @@ var (
 )
 
 // Off apply no color to the data
-func (cb *ColorBuffer) Off() {
-	cb.Append(colorOff)
+func (cb *ColorBuffer) Reset() {
+	cb.Append(colorReset)
 }
 
 // Red apply red color to the data
@@ -60,7 +60,7 @@ func (cb *ColorBuffer) Gray() {
 // mixer mix the color on and off byte with the actual data
 func mixer(data []byte, color []byte) []byte {
 	var result []byte
-	return append(append(append(result, color...), data...), colorOff...)
+	return append(append(append(result, color...), data...), colorReset...)
 }
 
 // Red apply red color to the data
