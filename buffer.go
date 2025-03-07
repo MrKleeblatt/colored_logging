@@ -19,7 +19,7 @@ func (b *Buffer) AppendByte(data byte) {
 }
 
 // AppendInt to buffer
-func (b *Buffer) AppendInt(val int, width int) {
+func (b *Buffer) AppendInt(remaining int, width int) {
 	var repr [8]byte
 	reprCount := len(repr) - 1
 	for remaining >= 10 || width > 1 {
