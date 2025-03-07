@@ -22,14 +22,14 @@ func (b *Buffer) AppendByte(data byte) {
 func (b *Buffer) AppendInt(val int, width int) {
 	var repr [8]byte
 	reprCount := len(repr) - 1
-	for val >= 10 || width > 1 {
+	for remaining >= 10 || width > 1 {
 		reminder := val / 10
-		repr[reprCount] = byte('0' + val - reminder*10)
-		val = reminder
+		repr[reprCount] = byte('0' + remaining - reminder*10)
+		remaining = reminder
 		reprCount--
 		width--
 	}
-	repr[reprCount] = byte('0' + val)
+	repr[reprCount] = byte('0' + remaining)
 	b.Append(repr[reprCount:])
 }
 
